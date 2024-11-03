@@ -16,6 +16,7 @@
             </div>
                 <div class="col text-center mt-5 pt-5 col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                     <form action="login" name="" method="post">
+                    <p class="lead fw-bold mb-1">Kalai</p>
                     <p class="lead fw-bold mb-1">Sign In</p>
                     <div class="form-outline mb-4">
                         <input type="email" name="email" id="" class="form-control" placeholder="Enter Your Email">
