@@ -46,9 +46,8 @@ public class Login extends HttpServlet{
 	         ResultSet rs = pst.executeQuery();
 	         if (rs.next()) {
 	        	 session.setAttribute("uname",rs.getString("name"));
-	        	 System.out.println("Login Success");
 
-	        	 dispatcher = request.getRequestDispatcher("index.jsp");
+	        	 dispatcher = request.getRequestDispatcher("search-showBusDetails.html");
 	         }else {
 	        	 request.setAttribute("status", "failed");
 
