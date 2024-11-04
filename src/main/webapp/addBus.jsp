@@ -162,7 +162,7 @@
                             <div class="text fw-bold">Arrival Date</div>
                             <input type="date" name = "arrivalDate" placeholder="Arrival Date">
                         </div>
-                        <div class="col mt-2">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
+                        <div class="col mt-2">
                             <div class="text fw-bold">Departure Time</div>
                             <input type="time" name = "departureTime" placeholder="Departure Time">
                         </div>
