@@ -39,31 +39,50 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Bus ID</th>
-                    <th scope="col">Bus Name</th>
-                    <th scope="col">Bus Route</th>
-                    <th scope="col">Departure Date</th>
-                    <th scope="col">Arrival Date</th>
-                    <th scope="col">Departure Time</th>
-                    <th scope="col">Arrival Time</th>
-                    <th scope="col">Start Place</th>
-                    <th scope="col">End Place</th>
+                     <th scope="col">Bus Id</th>
+                        <th scope="col">Bus Name</th>
+                        <th scope="col">Departure</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Arrival</th>
+                        <th scope="col">Price</th>
                     <th scope="col">Layout</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
+            <%
+            	try{
+            		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			 		con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=kalai;password=88833");
+	         		PreparedStatement pst = con.prepareStatement("select * from seat_status");
+
+					Resultset rs = pst.executeQuery();
+					while(rs.next())
+					{
+
+	
+            %>
                 <tr>
-                    <th scope="row">111</th>
-                    <td>Delux</td>
-                    <td>via Trichy</td>
-                    <td>12/11/2024</td>
-                    <td>13/11/2024</td>
-                    <td>10:10 PM</td>
-                    <td>5:30 AM</td>
-                    <td>Thirupur</td>
-                    <td>Chennai</td>
-                    <td>2X2 Seater</td>
+                    <th scope="row"><%= rs.getString("bus_id")  %></th>
+                     <tr class=" align-middle">
+                     	<td >
+                            <div class="fw-bold"><%= rs.getString("bus_name")  %></div>                       
+                        </td>
+                        <td >
+                            <div class="fw-bold"><%= rs.getString("departure_time")  %></div>
+                            <div class="sub-title"><%= rs.getString("start_place")  %></div>                        
+                        </td>
+                        <td><div class="fw-bold"><%= rs.getString("duration")  %></div></td>
+                        <td>
+                            <div class="fw-bold"><%= rs.getString("arrival_time")  %></div>
+                            <div class="sub-title"><%= rs.getString("end_place")  %></div> 
+                        </td>
+                        <td>
+                            <div class="fw-bold">RS 486/756</div>
+                            <div class="f6">37 Seats Available</div> 
+                            <div class="btn btn-primary me-2">View Seats</div>
+                        </td>
+                    </tr>
                     <td>
                         <div class="btn bg-primary me-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -78,6 +97,12 @@
                         </div>
                     </td>
                 </tr>
+                <%
+									}
+            	} catch(Exception e){
+	
+            	}
+				%>
                 <tr>
                     <th scope="row">112</th>
                     <td>Ultra Delux</td>
@@ -137,7 +162,7 @@
                             <div class="text fw-bold">Arrival Date</div>
                             <input type="date" name = "arrivalDate" placeholder="Arrival Date">
                         </div>
-                        <div class="col mt-2">
+                        <div class="col mt-2">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
                             <div class="text fw-bold">Departure Time</div>
                             <input type="time" name = "departureTime" placeholder="Departure Time">
                         </div>
@@ -152,6 +177,18 @@
                         <div class="col mt-2">
                             <div class="text fw-bold">End Place</div>
                             <input type="text" name = "endPlace" placeholder="End Place">
+                        </div>
+                        <div class="col mt-2">
+                            <div class="text fw-bold">Seater Price</div>
+                            <input type="text" name = "endPlace" placeholder="Seater Price">
+                        </div>
+                        <div class="col mt-2">
+                            <div class="text fw-bold">Sleeper Price</div>
+                            <input type="text" name = "endPlace" placeholder="Sleeper Price">
+                        </div>
+                        <div class="col mt-2">
+                            <div class="text fw-bold">Sleeper Price</div>
+                            <input type="text" name = "endPlace" placeholder="Sleeper Price">
                         </div>
                         <div class="col mt-2">
                             <label for="Layout" class="fw-bold">Layout:</label>
