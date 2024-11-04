@@ -1,5 +1,5 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> -->
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,10 +50,10 @@
                 </tr>
             </thead>
             <tbody>
-            <%
+            <!--  <%
             	try{
             		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			 		con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=;password=");
+			 		con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=Kalai;password=88833");
 	         		PreparedStatement pst = con.prepareStatement("select * from seat_status");
 
 					Resultset rs = pst.executeQuery();
@@ -61,7 +61,7 @@
 					{
 
 	
-            %>
+            %> -->
                 <tr>
                     <th scope="row"><%= rs.getString("bus_id")  %></th>
                      <tr class=" align-middle">
@@ -180,21 +180,17 @@
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Seater Price</div>
-                            <input type="text" name = "endPlace" placeholder="Seater Price">
+                            <input type="text" name = "seaterPrice" placeholder="Seater Price">
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Sleeper Price</div>
-                            <input type="text" name = "endPlace" placeholder="Sleeper Price">
-                        </div>
-                        <div class="col mt-2">
-                            <div class="text fw-bold">Sleeper Price</div>
-                            <input type="text" name = "endPlace" placeholder="Sleeper Price">
+                            <input type="text" name = "sleeperPrice" placeholder="Sleeper Price">
                         </div>
                         <div class="col mt-2">
                             <label for="Layout" class="fw-bold">Layout:</label>
                             <select name="layOut" id="layOut">
                             <option value="2X2seater">2X2 Seater</option>
-                            <option value="1X2 Slepper & Seater">1X2 Slepper & Seater</option>
+                            <option value="1X2 Slepper & Seater">1X2 Sleeper & Seater</option>
                             </select>
                         </div>
                         <!-- <div class="col">
