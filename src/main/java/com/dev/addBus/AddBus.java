@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -35,6 +36,9 @@ public class AddBus extends HttpServlet {
 		String endPlace = request.getParameter("endPlace");
 		String sourceDestination = startPlace+ endPlace;
 		String layOut = request.getParameter("layOut");
+		String seaterPrice = request.getParameter("seaterPrice");
+		String sleeperPrice = request.getParameter("sleeperPrice");
+		String duration = request.getParameter("duration");
 		String s1 = "0";
 		String s2 = "0";
 		String s3 = "0";
@@ -68,7 +72,6 @@ public class AddBus extends HttpServlet {
 		
 		
 		
-		
 		RequestDispatcher dispatcher = null;
 		Connection con = null;
 //		PrintWriter out = response.getWriter();
@@ -78,54 +81,57 @@ public class AddBus extends HttpServlet {
 			
 			 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			 con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=kalai;password=88833");
-	         PreparedStatement pst = con.prepareStatement("sp_add_bus ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?");
+	         PreparedStatement pst = con.prepareStatement("sp_add_bus ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?");
 	         System.out.print("Inside try");
 	         pst.setString(1,busId );
 	         pst.setString(2,busName );
 	         pst.setString(3,busRoute );
-	         pst.setString(4,departureDate );
-	         pst.setString(5,arrivalDate );
-	         pst.setString(6,departureTime );
-	         pst.setString(7,arrivalTime );
-	         pst.setString(8,startPlace );
-	         pst.setString(9,endPlace );
-	         pst.setString(10,s1 );
-	         pst.setString(11,s2 );
-	         pst.setString(12,s3 );
-	         pst.setString(13,s4 );
-	         pst.setString(14,s5 );
-	         pst.setString(15,s6 );
-	         pst.setString(16,s7 );
-	         pst.setString(17,s8 );
-	         pst.setString(18,s9 );
-	         pst.setString(19,s10 );
-	         pst.setString(20,s11 );
-	         pst.setString(21,s12 );
-	         pst.setString(22,s13 );
-	         pst.setString(23,s14 );
-	         pst.setString(24,s15 );
-	         pst.setString(25,s16 );
-	         pst.setString(26,s17 );
-	         pst.setString(27,s18 );
-	         pst.setString(28,s19 );
-	         pst.setString(29,s20 );
-	         pst.setString(30,s21 );
-	         pst.setString(31,s22 );
-	         pst.setString(32,s23 );
-	         pst.setString(33,s24 );
-	         pst.setString(34,s25 );
-	         pst.setString(35,s26 );
-	         pst.setString(36,s27 );
-	         pst.setString(37,s28 );	         
-	         pst.setString(38,s29 );
-	         pst.setString(39,s30 );
-	         pst.setString(40,sourceDestination);
-	         pst.setString(41, layOut);	         
+	         pst.setString(4,sourceDestination);
+	         pst.setString(5,departureDate );
+	         pst.setString(6,arrivalDate );
+	         pst.setString(7,departureTime );
+	         pst.setString(8,arrivalTime );
+	         pst.setString(9,startPlace );
+	         pst.setString(10,endPlace );
+	         pst.setString(11, layOut);
+	         pst.setString(12, duration);
+	         pst.setString(13, seaterPrice);
+	         pst.setString(14, sleeperPrice);
+	         pst.setString(15,s1 );
+	         pst.setString(16,s2 );
+	         pst.setString(17,s3 );
+	         pst.setString(18,s4 );
+	         pst.setString(19,s5 );
+	         pst.setString(20,s6 );
+	         pst.setString(21,s7 );
+	         pst.setString(22,s8 );
+	         pst.setString(23,s9 );
+	         pst.setString(24,s10 );
+	         pst.setString(25,s11 );
+	         pst.setString(26,s12 );
+	         pst.setString(27,s13 );
+	         pst.setString(28,s14 );
+	         pst.setString(29,s15 );
+	         pst.setString(30,s16 );
+	         pst.setString(31,s17 );
+	         pst.setString(32,s18 );
+	         pst.setString(33,s19 );
+	         pst.setString(34,s20 );
+	         pst.setString(35,s21 );
+	         pst.setString(36,s22 );
+	         pst.setString(37,s23 );
+	         pst.setString(38,s24 );
+	         pst.setString(39,s25 );
+	         pst.setString(40,s26 );
+	         pst.setString(41,s27 );
+	         pst.setString(42,s28 );	         
+	         pst.setString(43,s29 );
+	         pst.setString(44,s30 );
 	         
 	         int rowCount = pst.executeUpdate();
 	         if (rowCount != 0) {
 	        	 request.setAttribute("status", "success");
-	        	 dispatcher = request.getRequestDispatcher("login.jsp");
+	        	 dispatcher = request.getRequestDispatcher("addBus.jsp");
 	         }else {
 	        	 request.setAttribute("status", "failed");
 	         }

@@ -1,4 +1,4 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
+ <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
 <!-- <%
@@ -6,6 +6,13 @@ if(session.getAttribute("uname") == null){
 	response.sendRedirect("login.jsp");
 }
 %>  -->
+
+<%@page import="java.sql.*"  %>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Connection"%>
 
 <!DOCTYPE html>
 <html>
@@ -48,45 +55,46 @@ if(session.getAttribute("uname") == null){
                     </tr>
                 </thead>
                 <tbody class="text-center">
+                <%
+            	try{
+            		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            		Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=Kalai;password=88833");
+	         		PreparedStatement pst = con.prepareStatement("select * from seat_status");
+	         		
+	         		ResultSet rs = pst.executeQuery();
+					while(rs.next())
+					{
+
+	
+            %>
                     <tr class=" align-middle">
-                        <th scope="row">Delux</th>
+                        <th scope="row"><%= rs.getString("bus_name")  %></th>
                         <td >
-                            <div class="fw-bold">10:10</div>
-                            <div class="sub-title">Thirupur</div>                        
+                            <div class="fw-bold"><%= rs.getString("departure_time")  %></div>
+                            <div class="sub-title"><%= rs.getString("start_place")  %></div>                        
                         </td>
-                        <td><div class="fw-bold">09:00 Hrs</div></td>
+                        <td><div class="fw-bold"><%= rs.getString("duration")  %> Hrs</div></td>
                         <td>
-                            <div class="fw-bold">07:00</div>
-                            <div class="sub-title">Chennai</div> 
+                            <div class="fw-bold"><%= rs.getString("arrival_time")  %></div>
+                            <div class="sub-title"><%= rs.getString("end_place")  %></div> 
                         </td>
                         <td>
-                            <div class="fw-bold">RS 486/756</div>
+                            <div class="fw-bold">RS <%= rs.getString("seater_price")  %> / <%= rs.getString("sleeper_price")  %></div>
                             <div class="f6">37 Seats Available</div> 
                             <div class="btn btn-primary me-2">View Seats</div>
                         </td>
                     </tr>
-                    <tr class=" align-middle">
-                        <th scope="row">Delux</th>
-                        <td >
-                            <div class="fw-bold">10:10</div>
-                            <div class="sub-title">Thirupur</div>                        
-                        </td>
-                        <td><div class="fw-bold">09:00 Hrs</div></td>
-                        <td>
-                            <div class="fw-bold">07:00</div>
-                            <div class="sub-title">Chennai</div> 
-                        </td>
-                        <td>
-                            <div class="fw-bold">RS 486/756</div>
-                            <div class="f6">37 Seats Available</div> 
-                            <div class="btn btn-primary me-2">View Seats</div>
-                        </td>
-                    </tr>
+                    <%
+									}
+            	} catch(Exception e){
+	
+            	}
+				%>
                 </tbody>
             </table>
         <!-- Show Bus details Table End -->
         </div>
-
+<!--  
     <script>
         const searchInput = document.getElementById('searchInput');
         const searchResults = document.getElementById('searchResults');
@@ -117,6 +125,7 @@ if(session.getAttribute("uname") == null){
             handleSearch(query);
         });
     </script>
+    -->
 
    </body>
 </html>
