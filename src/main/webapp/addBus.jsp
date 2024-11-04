@@ -53,7 +53,7 @@
             <%
             	try{
             		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			 		con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=kalai;password=88833");
+			 		con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=;password=");
 	         		PreparedStatement pst = con.prepareStatement("select * from seat_status");
 
 					Resultset rs = pst.executeQuery();
