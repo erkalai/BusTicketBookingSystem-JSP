@@ -9,13 +9,16 @@ import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/addbus")
-public class AddBus {
+@WebServlet("/addBusDetails")
+public class AddBus extends HttpServlet {
 	
+	private static final long serialVersionUID = 1L;
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
 		
@@ -30,37 +33,38 @@ public class AddBus {
 		String arrivalTime = request.getParameter("arrivalTime");
 		String startPlace = request.getParameter("startPlace");
 		String endPlace = request.getParameter("endPlace");
-		String sourceDestination = request.getParameter(startPlace.substring(0,4) + endPlace.substring(0,4));
-		String s1 = request.getParameter("s1");
-		String s2 = request.getParameter("s2");
-		String s3 = request.getParameter("s3");
-		String s4 = request.getParameter("s4");
-		String s5 = request.getParameter("s5");
-		String s6 = request.getParameter("s6");
-		String s7 = request.getParameter("s7");
-		String s8 = request.getParameter("s8");
-		String s9 = request.getParameter("s9");
-		String s10 = request.getParameter("s10");
-		String s11 = request.getParameter("s11");
-		String s12 = request.getParameter("s12");
-		String s13 = request.getParameter("s13");
-		String s14 = request.getParameter("s14");
-		String s15 = request.getParameter("s15");
-		String s16 = request.getParameter("s16");
-		String s17 = request.getParameter("s17");
-		String s18 = request.getParameter("s18");
-		String s19 = request.getParameter("s19");
-		String s20 = request.getParameter("s20");
-		String s21 = request.getParameter("s21");
-		String s22 = request.getParameter("s22");
-		String s23 = request.getParameter("s23");
-		String s24 = request.getParameter("s24");
-		String s25 = request.getParameter("s25");
-		String s26 = request.getParameter("s26");
-		String s27 = request.getParameter("s27");
-		String s28 = request.getParameter("s28");
-		String s29 = request.getParameter("s29");
-		String s30 = request.getParameter("s30");
+		String sourceDestination = startPlace+ endPlace;
+		String layOut = request.getParameter("layOut");
+		String s1 = "0";
+		String s2 = "0";
+		String s3 = "0";
+		String s4 = "0";
+		String s5 = "0";
+		String s6 = "0";
+		String s7 = "0";
+		String s8 = "0";
+		String s9 = "0";
+		String s10 = "0";
+		String s11 = "0";
+		String s12 = "0";
+		String s13 = "0";
+		String s14 = "0";
+		String s15 = "0";
+		String s16 = "0";
+		String s17 = "0";
+		String s18 = "0";
+		String s19 = "0";
+		String s20 = "0";
+		String s21 = "0";
+		String s22 = "0";
+		String s23 = "0";
+		String s24 = "0";
+		String s25 = "0";
+		String s26 = "0";
+		String s27 = "0";
+		String s28 = "0";
+		String s29 = "0";
+		String s30 = "0";
 		
 		
 		
@@ -69,12 +73,11 @@ public class AddBus {
 //		PrintWriter out = response.getWriter();
 //		out.print(uname);
 		
-		
 		try {
 			
 			 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			 con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=kalai;password=88833");
-	         PreparedStatement pst = con.prepareStatement("sp_add_bus ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?");
+	         PreparedStatement pst = con.prepareStatement("sp_add_bus ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?");
 	         System.out.print("Inside try");
 	         pst.setString(1,busId );
 	         pst.setString(2,busName );
@@ -116,7 +119,7 @@ public class AddBus {
 	         pst.setString(38,s29 );
 	         pst.setString(39,s30 );
 	         pst.setString(40,sourceDestination);
-	         
+	         pst.setString(41, layOut);	         
 	         
 	         int rowCount = pst.executeUpdate();
 	         if (rowCount != 0) {

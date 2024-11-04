@@ -113,49 +113,49 @@
     <!-- Form -> Add Bus Popup Window Start -->
     <div class="popup">
         <div class="pop-content">
-            <form action="" method="post">
+            <form action="addBusDetails" method="post" id="form">
                 <div class="container">
                     <h5 class="text-center mt-1">Add Bus Details</h5>
                     <div class="row">
                         <div class="col mt-2">
                             <div class="text fw-bold">Bus ID</div>
-                            <input type="text" placeholder="Bus ID">
+                            <input type="text" name = "busId" placeholder="Bus ID">
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Bus Name</div>
-                            <input type="text" placeholder="Bus Name">
+                            <input type="text" name = "busName" placeholder="Bus Name">
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Bus Route</div>
-                            <input type="text" placeholder="Bus Route">
+                            <input type="text" name = "busRoute" placeholder="Bus Route">
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Departure Date</div>
-                            <input type="date" placeholder="Departure Date">
+                            <input type="date" name = "departureDate" placeholder="Departure Date">
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Arrival Date</div>
-                            <input type="date" placeholder="Arrival Date">
+                            <input type="date" name = "arrivalDate" placeholder="Arrival Date">
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Departure Time</div>
-                            <input type="time" placeholder="Departure Time">
+                            <input type="time" name = "departureTime" placeholder="Departure Time">
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Arrival Time</div>
-                            <input type="time" placeholder="Arrival Time">
+                            <input type="time" name = "arrivalTime" placeholder="Arrival Time">
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Start Place</div>
-                            <input type="text" placeholder="Start Place">
+                            <input type="text" name = "startPlace" placeholder="Start Place">
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">End Place</div>
-                            <input type="text" placeholder="End Place">
+                            <input type="text" name = "endPlace" placeholder="End Place">
                         </div>
                         <div class="col mt-2">
-                            <label for="cars" class="fw-bold">Layout:</label>
-                            <select name="cars" id="cars">
+                            <label for="Layout" class="fw-bold">Layout:</label>
+                            <select name="layOut" id="layOut">
                             <option value="2X2seater">2X2 Seater</option>
                             <option value="1X2 Slepper & Seater">1X2 Slepper & Seater</option>
                             </select>
@@ -200,7 +200,7 @@
                     </div>
                     <div class="row mt-5">
                         <div class="col text-center">
-                            <div class="btn btn-primary">Add</div>
+                            <button class="btn btn-primary">Add</button>
                             <div class="close btn btn-danger">Close</div>
                         </div>
                     </div>
