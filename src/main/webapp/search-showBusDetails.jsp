@@ -21,6 +21,22 @@ if(session.getAttribute("uname") == null){
 <title>Index</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+        #dropdown {
+         display: none; 
+        }
+  .dropdown-item {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f0f0f0;
+        }
+
+</style>
+
 </head>
 <body>
         <div class="container">
@@ -28,13 +44,15 @@ if(session.getAttribute("uname") == null){
                 <p class="lead fw-bold mb-1 text-center">Book Bus Tickets</p>
                 <div class="row mt-5 justify-content-center text-center">
                     <div class="col form-outline mb-2 ">
-                        <input type="text" name="source" id="source" class="form-control" placeholder="Source">
+                        <input type="text" name="source" id="source" class="source form-control" placeholder="Source" />
+                        <div id="dropdown" class=" dropdown form-control" size="0">
+                        </div>
                     </div>
                     <div class="col form-outline mb-2">
-                        <input type="email" name="email" id="email" class="form-control" placeholder="Destination">
+                        <input type="email" name="email" id="destination" class="form-control" placeholder="Destination">
                     </div>
                     <div class="col form-outline mb-2">
-                        <input type="date" name="mobileno" id="mobileno" class="form-control" placeholder="Onward">
+                        <input type="date" name="mobileno" id="onward" class="form-control" placeholder="Onward">
                     </div>
                     <div class="col form-outline mb-2">
                         <button class="btn btn-primary w-50 fw-bold">Search</button>
@@ -94,38 +112,81 @@ if(session.getAttribute("uname") == null){
             </table>
         <!-- Show Bus details Table End -->
         </div>
-<!--  
-    <script>
-        const searchInput = document.getElementById('searchInput');
-        const searchResults = document.getElementById('searchResults');
+	
+	
+	
+	
+	
+	
 
-        async function handleSearch(query) {
-            if (!query) {
-                searchResults.innerHTML = ''; // Clear results if query is empty
-                return;
-            }
+<script type="text/javascript">
 
-            try {
-                const response = await fetch(`http://localhost:8082/DemoBilling/search?query=${encodeURIComponent(query)}`);
-                const results = await response.json(); // Parse JSON response
 
-                searchResults.innerHTML = '';
-                results.forEach(result => {
-                    const li = document.createElement('li');
-                    li.textContent = result; // Display each result
-                    searchResults.appendChild(li);
-                });
-            } catch (error) {
-                console.error("Error fetching search results", error);
-            }
+
+$(document).ready(function() {
+    // Event listener for typing in the search input
+    $('#source').on('keyup', function() {
+        var query = $(this).val();
+
+        // If query is empty, don't make an AJAX request
+        if(query.length > 0) {
+
+            $.ajax({
+                url: 'SearchServlet',   // Servlet that handles the search
+                type: 'GET',
+                data: { query: query },     // Send query as a parameter
+                success: function(data) {
+
+                    // Clear the existing dropdown options
+                    $('#dropdown').empty();
+
+                    // Append new search results to the dropdown
+                    if (data.length > 0) {
+                    	
+                        data.forEach(function(item) {
+                        	 $('#dropdown').append('<div class="dropdown-item" data-value="' + item + '">' + item + '</div>'); 
+                           <!-- $('#dropdown').append('<option value="' + item + '">' + item + '</option>'); -->
+                        });
+                        $('#dropdown').show();
+                    } else {
+                        $('#dropdown').append('<option>No results found</option>');
+                        $('#dropdown').show();
+                    }
+                },
+                error: function() {
+                    alert("An error occurred while fetching search results.");
+                }
+            });
+        } else {
+            // If the input is empty, reset the dropdown
+            $('#dropdown').empty().hide();
         }
+    });
+    console.log(" Event");
+    
+    // Handle the click event on dropdown items
+    $('#dropdown').on('click', '.dropdown-item', function() {
+    	console.log("Click Event");
+        // Set the value of the input field to the selected option
+        var selectedValue = $(this).data('value');
+        console.log(selectedValue);
+        $('#source').val(selectedValue);
 
-        searchInput.addEventListener('input', () => {
-            const query = searchInput.value;
-            handleSearch(query);
-        });
-    </script>
-    -->
+        // Hide the dropdown after selection
+        $('#dropdown').hide();
+    });
+
+    // Optional: Close the dropdown when clicking outside the input and dropdown
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('#source').length && !$(e.target).closest('#dropdown').length) {
+            $('#dropdown').hide();
+        }
+    });
+    
+    
+});
+</script>
+ 	
 
    </body>
 </html>

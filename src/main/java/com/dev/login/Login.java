@@ -47,7 +47,7 @@ public class Login extends HttpServlet{
 	         if (rs.next()) {
 	        	 session.setAttribute("uname",rs.getString("name"));
 
-	        	 dispatcher = request.getRequestDispatcher("search-showBusDetails.html");
+	        	 dispatcher = request.getRequestDispatcher("search-showBusDetails.jsp");
 	         }else {
 	        	 request.setAttribute("status", "failed");
 
