@@ -21,6 +21,17 @@ version="4.0">
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/SearchServlet</url-pattern> <!-- Make sure this matches -->
     </servlet-mapping>
+    
+    
+     <servlet>
+        <servlet-name>SearchBus</servlet-name>
+        <servlet-class>com.dev.search.SearchBus</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchBus</servlet-name>
+        <url-pattern>/SearchBus</url-pattern> <!-- Make sure this matches -->
+    </servlet-mapping>
   
   
 </web-app>

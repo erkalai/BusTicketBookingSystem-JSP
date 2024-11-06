@@ -31,6 +31,7 @@ public class SearchServlet extends HttpServlet {
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     result.add(resultSet.getString("bus_station"));
+                    
                 }
             }
         } catch (SQLException e) {

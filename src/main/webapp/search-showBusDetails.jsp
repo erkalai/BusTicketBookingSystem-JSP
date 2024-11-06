@@ -43,7 +43,7 @@ if(session.getAttribute("uname") == null){
 </head>
 <body>
         <div class="container">
-            <form action="" method="post">
+            <!-- <form action="" method="post"> -->
                 <p class="lead fw-bold mb-1 text-center">Book Bus Tickets</p>
                 <div class="row mt-5 justify-content-center text-center">
                     <div class="col form-outline mb-2 ">
@@ -60,10 +60,10 @@ if(session.getAttribute("uname") == null){
                         <input type="date" name="onward" id="onward" class="form-control" placeholder="Onward">
                     </div>
                     <div class="col form-outline mb-2">
-                        <button class="btn btn-primary w-50 fw-bold">Search</button>
+                        <button class="btn btn-primary w-50 fw-bold searchBtn" id="searchBtn" name="searchBtn">Search</button>
                     </div>
                 </div>
-            </form>
+           <!--   </form> -->
         </div>
         <div class="container">
             <!-- Show Bus details Table Start -->
