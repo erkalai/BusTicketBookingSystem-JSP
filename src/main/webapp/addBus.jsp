@@ -63,8 +63,8 @@
              <%
             	try{
             		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            		Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=Kalai;password=88833");
-	         		PreparedStatement pst = con.prepareStatement("select * from seat_status");
+            		Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=BusBooking;TrustServerCertificate=True;user=root;password=root");
+	         		PreparedStatement pst = con.prepareStatement("select * from bus_details");
 	         		
 	         		ResultSet rs = pst.executeQuery();
 					while(rs.next())

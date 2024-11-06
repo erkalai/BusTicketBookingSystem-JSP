@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -73,14 +72,14 @@ public class AddBus extends HttpServlet {
 		
 		
 		RequestDispatcher dispatcher = null;
-		Connection con = null;
+//		Connection con = null;
 //		PrintWriter out = response.getWriter();
 //		out.print(uname);
 		
 		try {
 			
 			 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			 con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=kalai;password=88833");
+			 Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=BusBooking;TrustServerCertificate=True;user=root;password=root");
 	         PreparedStatement pst = con.prepareStatement("sp_add_bus ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?");
 	         System.out.print("Inside try");
 	         pst.setString(1,busId );
@@ -138,12 +137,13 @@ public class AddBus extends HttpServlet {
 	         dispatcher.forward(request, response);
 		}catch(Exception e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				con.close();
-			}catch(SQLException e) {
-				
-			}
 		}
+//		finally {
+//			try {
+//				con.close();
+//			}catch(SQLException e) {
+//				
+//			}
+//		}
 	}
 }

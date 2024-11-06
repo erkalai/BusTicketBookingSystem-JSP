@@ -39,7 +39,7 @@ public class Login extends HttpServlet{
 		try {
 			
 			 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			 con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=kalai;password=88833");
+			 con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=BusBooking;TrustServerCertificate=True;user=root;password=root");
 	         PreparedStatement pst = con.prepareStatement("select * from user_tbl where email = ? AND password = ?");
 	         pst.setString(1, email);
 	         pst.setString(2, password);

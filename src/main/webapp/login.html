@@ -33,7 +33,7 @@
                     </div>
                             <button class="btn btn-primary btn-lg mt-2 d-flex align-items-left" >Login</button>
     
-                            <p class="small mt-2 pt-1 fw-bold d-flex align-items-left">Don't have an account? <a href="signup.html" class="text-danger">Register</a></p>
+                            <p class="small mt-2 pt-1 fw-bold d-flex align-items-left">Don't have an account? <a href="signup.jsp" class="text-danger">Register</a></p>
                     </form>
                 </div>
         </div>

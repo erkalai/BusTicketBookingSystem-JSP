@@ -32,7 +32,7 @@ public class RegistrationServlet extends HttpServlet{
 		
 		
 		RequestDispatcher dispatcher = null;
-		Connection con = null;
+//		Connection con = null;
 //		PrintWriter out = response.getWriter();
 //		out.print(uname);
 		
@@ -40,7 +40,7 @@ public class RegistrationServlet extends HttpServlet{
 		try {
 			
 			 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			 con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=kalai;password=88833");
+			 Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=BusBooking;TrustServerCertificate=True;user=root;password=root");
 	         PreparedStatement pst = con.prepareStatement("sp_user_register ?,?,?,?");
 	         System.out.print("Inside try");
 	         pst.setString(1, uname);
@@ -59,12 +59,12 @@ public class RegistrationServlet extends HttpServlet{
 	         dispatcher.forward(request, response);
 		}catch(Exception e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				con.close();
-			}catch(SQLException e) {
-				
-			}
-		}	
+		}
+//		finally {
+//			try {
+//			}catch(SQLException e) {
+//				
+//			}
+//		}	
 	}
 }

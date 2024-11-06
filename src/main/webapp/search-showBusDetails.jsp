@@ -84,12 +84,10 @@ if(session.getAttribute("uname") == null){
                 
             	try{
             		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            		Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=Kalai;password=88833");
-	         		PreparedStatement pst = con.prepareStatement("select * from seat_status WHERE source_destinaton = 'CHENNAITRICHY' AND departure_date = '2024-10-30' ");
+            		Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=root;password=root");
+	         		PreparedStatement pst = con.prepareStatement("select * from bus_details WHERE source_destinaton = 'CHENNAITRICHY' AND departure_date = '2024-10-30' ");
 	         		
 			
-	   	         //pst.setString(1, sourcedestination);
-	   	         //pst.setString(2, onward);
 	         		ResultSet rs = pst.executeQuery();
 					while(rs.next())
 					{
@@ -135,6 +133,8 @@ if(session.getAttribute("uname") == null){
 
 
 $(document).ready(function() {
+	
+	console.log("Inside Ajax");
     // Event listener for typing in the search input
     $('#source').on('keyup', function() {
         var query = $(this).val();
