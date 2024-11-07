@@ -21,8 +21,6 @@ if(session.getAttribute("uname") == null){
 <title>Index</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
         #sourceDropdown {
@@ -45,6 +43,7 @@ if(session.getAttribute("uname") == null){
 </head>
 <body>
         <div class="container">
+        <a href="JQuery.html">JQuery</a>
             <!-- <form action="" method="post"> -->
                 <p class="lead fw-bold mb-1 text-center">Book Bus Tickets</p>
                 <div class="row mt-5 justify-content-center text-center">
@@ -68,7 +67,7 @@ if(session.getAttribute("uname") == null){
            <!--   </form> -->
         </div>
         <div class="container">
-        
+        <div class=" text-primary fw-bold text-center border-2" id="journeyDate"></div>
             <!-- Show Bus details Table Start -->
             <table class="table mt-5">
                 <thead>
@@ -100,15 +99,18 @@ if(session.getAttribute("uname") == null){
 
 <!-- On Click function To show search buses in Table START -->
 
-
 $(document).ready(function() {
     // Event listener for clicking the "Search" button
     $('#searchBtn').on('click', function() {
         
+    	
+    	
         var source = $('#source').val();
         var destination = $('#destination').val();
         var onward = $('#onward').val();
 
+        
+        
         // Make AJAX call to fetch bus details
         $.ajax({
             url: 'SearchBus', // Replace with the URL to your servlet
@@ -121,9 +123,12 @@ $(document).ready(function() {
             success: function(data) {
                 // Empty the table body before populating new data
                 $('#busDetailsTable').empty();
-
+				$('#journeyDate').empty();
                 if (Array.isArray(data) && data.length > 0) {
                     
+                	$('#journeyDate').text("Journey Date : " + onward);
+                	//console.log("Check",${data.busName});
+                	
                     // Iterate over the data and create rows for the table
                     data.forEach(function(bus) {
                         
@@ -137,12 +142,34 @@ $(document).ready(function() {
                         var sleeperPrice = bus.sleeperPrice || '0';
 
                         // Log the bus information (e.g., for debugging)
-                        console.log("Bus Information: ", bus);  // Make sure this is outside of the template literal
+                        //console.log("Bus Information: ", bus);  
 
-                        console.log(startPlace);
+                        
+                        
                         // Create the row HTML using a template literal
-                        var row = `
-                        console.log("Kalai");
+                        
+                        
+                        
+                        var row = '<tr class="align-middle text-danger">' +
+             '<td>' + busName + '</td>' +
+             '<td>' +
+                 '<div class="fw-bold">' + departureTime + '</div>' +
+                 '<div class="sub-title">' + startPlace + '</div>' +
+             '</td>' +
+             '<td><div class="fw-bold">' + duration + '</div></td>' +
+             '<td>' +
+                 '<div class="fw-bold">' + arrivalTime + '</div>' +
+                 '<div class="sub-title">' + endPlace + '</div>' +
+             '</td>' +
+             '<td>' +
+                 '<div class="fw-bold">₹ ' + seaterPrice + ' / ₹ ' + sleeperPrice + '</div>' +
+                 '<div class="f6">37 Seats Available</div>' +
+                 '<div class="btn btn-primary me-2">View Seats</div>' +
+             '</td>' +
+         '</tr>';
+
+                        
+                        /* var row = `
                             <tr class="align-middle text-danger">
                                 <td>${busName}</td>
                                 <td>
@@ -160,9 +187,9 @@ $(document).ready(function() {
                                     <div class="btn btn-primary me-2">View Seats</div>
                                 </td>
                             </tr>
-                        `;
+                        `;*/
 
-                        // Append the row to the table
+                        // Append the row to the table body
                         $('#busDetailsTable').append(row);
                     });
                 } else {
@@ -176,6 +203,8 @@ $(document).ready(function() {
         });
     });
 });
+
+
 
 <!-- On Click function To show search buses in Table  END-->
 
