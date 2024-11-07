@@ -22,6 +22,8 @@ if(session.getAttribute("uname") == null){
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
         #sourceDropdown {
          display: none; 
@@ -66,6 +68,7 @@ if(session.getAttribute("uname") == null){
            <!--   </form> -->
         </div>
         <div class="container">
+        
             <!-- Show Bus details Table Start -->
             <table class="table mt-5">
                 <thead>
@@ -77,47 +80,12 @@ if(session.getAttribute("uname") == null){
                         <th scope="col">Price</th>
                     </tr>
                 </thead>
-                <tbody class="text-center">
-                <%
-                String sourcedestination = request.getParameter("source")+request.getParameter("destination");
-                String onward = request.getParameter("onward");
+                <tbody id="busDetailsTable" class="text-center" name="busDetailsTable">
                 
-            	try{
-            		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            		Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=JSP;TrustServerCertificate=True;user=root;password=root");
-	         		PreparedStatement pst = con.prepareStatement("select * from bus_details WHERE source_destinaton = 'CHENNAITRICHY' AND departure_date = '2024-10-30' ");
-	         		
-			
-	         		ResultSet rs = pst.executeQuery();
-					while(rs.next())
-					{
-
-	
-            %>
-                    <tr class=" align-middle">
-                        <th scope="row"><%= rs.getString("bus_name")  %></th>
-                        <td >
-                            <div class="fw-bold"><%= rs.getString("departure_time")  %></div>
-                            <div class="sub-title"><%= rs.getString("start_place")  %></div>                        
-                        </td>
-                        <td><div class="fw-bold"><%= rs.getString("duration")  %> Hrs</div></td>
-                        <td>
-                            <div class="fw-bold"><%= rs.getString("arrival_time")  %></div>
-                            <div class="sub-title"><%= rs.getString("end_place")  %></div> 
-                        </td>
-                        <td>
-                            <div class="fw-bold">RS <%= rs.getString("seater_price")  %> / <%= rs.getString("sleeper_price")  %></div>
-                            <div class="f6">37 Seats Available</div> 
-                            <div class="btn btn-primary me-2">View Seats</div>
-                        </td>
-                    </tr>
-                    <%
-									}
-            	} catch(Exception e){
-	
-            	}
-				%>
+                <!-- Dynamic rows will be appended here -->
+                    
                 </tbody>
+                
             </table>
         <!-- Show Bus details Table End -->
         </div>
@@ -130,11 +98,89 @@ if(session.getAttribute("uname") == null){
 
 <script type="text/javascript">
 
+<!-- On Click function To show search buses in Table START -->
 
 
 $(document).ready(function() {
+    // Event listener for clicking the "Search" button
+    $('#searchBtn').on('click', function() {
+        
+        var source = $('#source').val();
+        var destination = $('#destination').val();
+        var onward = $('#onward').val();
+
+        // Make AJAX call to fetch bus details
+        $.ajax({
+            url: 'SearchBus', // Replace with the URL to your servlet
+            type: 'GET',
+            data: {
+                source: source,
+                destination: destination,
+                onward: onward
+            },
+            success: function(data) {
+                // Empty the table body before populating new data
+                $('#busDetailsTable').empty();
+
+                if (Array.isArray(data) && data.length > 0) {
+                    
+                    // Iterate over the data and create rows for the table
+                    data.forEach(function(bus) {
+                        
+                        var busName = bus.busName || 'N/A';           // Default to 'N/A' if busName is falsy
+                        var departureTime = bus.departureTime || 'N/A';
+                        var arrivalTime = bus.arrivalTime || 'N/A';
+                        var startPlace = bus.startPlace || 'N/A';
+                        var endPlace = bus.endPlace || 'N/A';
+                        var duration = bus.duration || 'N/A';
+                        var seaterPrice = bus.seaterPrice || '0';
+                        var sleeperPrice = bus.sleeperPrice || '0';
+
+                        // Log the bus information (e.g., for debugging)
+                        console.log("Bus Information: ", bus);  // Make sure this is outside of the template literal
+
+                        console.log(startPlace);
+                        // Create the row HTML using a template literal
+                        var row = `
+                        console.log("Kalai");
+                            <tr class="align-middle text-danger">
+                                <td>${busName}</td>
+                                <td>
+                                    <div class="fw-bold">${departureTime}</div>
+                                    <div class="sub-title">${startPlace}</div>
+                                </td>
+                                <td><div class="fw-bold">${duration}</div></td>
+                                <td>
+                                    <div class="fw-bold">${arrivalTime}</div>
+                                    <div class="sub-title">${endPlace}</div>
+                                </td>
+                                <td>
+                                    <div class="fw-bold">₹ ${seaterPrice} / ₹ ${sleeperPrice}</div>
+                                    <div class="f6">37 Seats Available</div>
+                                    <div class="btn btn-primary me-2">View Seats</div>
+                                </td>
+                            </tr>
+                        `;
+
+                        // Append the row to the table
+                        $('#busDetailsTable').append(row);
+                    });
+                } else {
+                    // Display message if no buses found
+                    $('#busDetailsTable').append('<tr><td colspan="5">No buses found for the selected route.</td></tr>');
+                }
+            },
+            error: function() {
+                alert("An error occurred while fetching search results.");
+            }
+        });
+    });
+});
+
+<!-- On Click function To show search buses in Table  END-->
+
+$(document).ready(function() {
 	
-	console.log("Inside Ajax");
     // Event listener for typing in the search input
     $('#source').on('keyup', function() {
         var query = $(this).val();
@@ -155,8 +201,7 @@ $(document).ready(function() {
                     if (data.length > 0) {
                     	
                         data.forEach(function(item) {
-                        	 $('#sourceDropdown').append('<div class="dropdown-item" data-value="' + item + '">' + item + '</div>'); 
-                           <!-- $('#dropdown').append('<option value="' + item + '">' + item + '</option>'); -->
+                        	 $('#sourceDropdown').append('<div class="dropdown-item" data-value="' + item + '">' + item + '</div>');
                         });
                         $('#sourceDropdown').show();
                     } else {
@@ -240,11 +285,9 @@ $(document).ready(function() {
     
     // Handle the click event on dropdown items
     $('#destinationDropdown').on('click', '.dropdown-item', function() {
-    	console.log("Click Event");
         // Set the value of the input field to the selected option
         var selectedValue = $(this).data('value');
         $('#destination').val(selectedValue);
-        console.log(selectedValue);
         // Hide the dropdown after selection
         $('#destinationDropdown').hide();
     });

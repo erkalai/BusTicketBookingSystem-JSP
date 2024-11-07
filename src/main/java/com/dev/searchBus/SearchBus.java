@@ -24,16 +24,20 @@ public class SearchBus extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
-		String source_destinaton = request.getParameter("source") + request.getParameter("destination");
+
+		
+		String source = request.getParameter("source");
+		String destination = request.getParameter("destination");
 		String departure_date =request.getParameter("onward");
 		
 	
 		
 		
+//		String searchTerm = request.getParameter("query");
+//		response.setContentType("application/json");
+//		PrintWriter out = response.getWriter();
 		
-		String searchTerm = request.getParameter("query");
-		response.setContentType("application/json");
-		PrintWriter out = response.getWriter();
+		
 		List<Map<String, Object>> result = new ArrayList<>();
 		
 		// Database connection 
@@ -47,7 +51,7 @@ public class SearchBus extends HttpServlet{
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             
             
-            preparedStatement.setString(1, source_destinaton);
+            preparedStatement.setString(1, source + destination);
             preparedStatement.setString(2, departure_date);
             
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -71,6 +75,7 @@ public class SearchBus extends HttpServlet{
                     busDetail.put("seaterPrice", resultSet.getString("seater_price"));
                     busDetail.put("sleeperPrice", resultSet.getString("sleeper_price"));
                     
+                    
                     // Add the map to the result list
                     result.add(busDetail);
                 }
@@ -81,10 +86,17 @@ public class SearchBus extends HttpServlet{
 
         // Convert the list to JSON format
 
-        System.out.println("JSON");
+        response.setContentType("application/json");
+        
+        PrintWriter out = response.getWriter();
+        
         String jsonResponse = new com.google.gson.Gson().toJson(result);
+        
+        
+//        response.getWriter().write(jsonResponse.toString());
+        
         out.write(jsonResponse);
-        System.out.println(jsonResponse);
+//        System.out.println(jsonResponse);
 		
 	}
 }

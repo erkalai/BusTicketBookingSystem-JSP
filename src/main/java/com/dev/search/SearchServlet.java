@@ -24,7 +24,6 @@ public class SearchServlet extends HttpServlet {
 
         try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword)) {
             String sql = "SELECT bus_station FROM bus_stations_list WHERE bus_station LIKE ?";
-            System.out.println("inside try");
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, "%" + searchTerm + "%");
 
@@ -40,10 +39,8 @@ public class SearchServlet extends HttpServlet {
 
         // Convert the list to JSON format
 
-        System.out.println("JSON");
         String jsonResponse = new com.google.gson.Gson().toJson(result);
         out.write(jsonResponse);
-        System.out.println(jsonResponse);
     }
 }
 
