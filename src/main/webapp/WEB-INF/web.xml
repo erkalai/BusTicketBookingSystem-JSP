@@ -8,7 +8,7 @@ version="4.0">
 
   <display-name>BusTicketingBooking-JSP</display-name>
   <welcome-file-list>
-    <welcome-file>JQuery.html</welcome-file>
+    <welcome-file>index.html</welcome-file>
   </welcome-file-list>
   
   

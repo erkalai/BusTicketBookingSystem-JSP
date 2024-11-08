@@ -43,7 +43,6 @@ if(session.getAttribute("uname") == null){
 </head>
 <body>
         <div class="container">
-        <a href="JQuery.html">JQuery</a>
             <!-- <form action="" method="post"> -->
                 <p class="lead fw-bold mb-1 text-center">Book Bus Tickets</p>
                 <div class="row mt-5 justify-content-center text-center">
@@ -70,14 +69,8 @@ if(session.getAttribute("uname") == null){
         <div class=" text-primary fw-bold text-center border-2" id="journeyDate"></div>
             <!-- Show Bus details Table Start -->
             <table class="table mt-5">
-                <thead>
-                    <tr class="text-center">
-                        <th scope="col">Bus Name</th>
-                        <th scope="col">Departure</th>
-                        <th scope="col">Duration</th>
-                        <th scope="col">Arrival</th>
-                        <th scope="col">Price</th>
-                    </tr>
+                <thead id="busTableTitle">
+                    
                 </thead>
                 <tbody id="busDetailsTable" class="text-center" name="busDetailsTable">
                 
@@ -88,9 +81,6 @@ if(session.getAttribute("uname") == null){
             </table>
         <!-- Show Bus details Table End -->
         </div>
-	
-	
-	
 	
 	
 	
@@ -124,8 +114,23 @@ $(document).ready(function() {
                 // Empty the table body before populating new data
                 $('#busDetailsTable').empty();
 				$('#journeyDate').empty();
+				$('#busTableTitle').empty();
                 if (Array.isArray(data) && data.length > 0) {
-                    
+
+    				$('#busTableTitle').append(table);
+                	
+                	var table ='<tr class="text-center">' + 
+                	
+                    '<th scope="col">Bus Name</th>' +
+                    '<th scope="col">Departure</th>' +
+                    '<th scope="col">Duration</th>' +
+                    '<th scope="col">Arrival</th>' +
+                    '<th scope="col">Price</th>' +
+                '</tr>'
+                	
+    				$('#busTableTitle').append(table);
+                	
+                	
                 	$('#journeyDate').text("Journey Date : " + onward);
                 	//console.log("Check",${data.busName});
                 	
