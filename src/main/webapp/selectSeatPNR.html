@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!-- <%@ page contentType="text/html;charset=UTF-8" language="java" %> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,63 +8,184 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <style>
+        .seatLayout {
+            border: solid black 2px;
+            background-color: aqua;
+            border-radius: 10px;
+        }
+        .seat-column {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .seat-column input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .seat-label {
+            font-size: 1.2rem;
+        }
+        .seat-row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .seat-label input {
+            margin-right: 10px;
+        }
+    </style>
+
+
 </head>
 <body>
 
-<div class="container mt-5">
-    <h2 class="text-center">Bus Seat Layout</h2>
-
-    <!-- Seat Layout -->
-    <div class="seat-layout">
-        <!-- Row 1 -->
-        <div class="row seat-row">
-            <div class="col seat available" data-seat="A1">A1</div>
-            <div class="col seat available" data-seat="A2">A2</div>
-            <div class="col-2 gap"></div> <!-- Gap between first and second pair -->
-            <div class="col seat available" data-seat="A3">A3</div>
-            <div class="col seat available" data-seat="A4">A4</div>
-        </div>
-
-        <!-- Row 2 -->
-        <div class="row seat-row">
-            <div class="col seat available" data-seat="B1">B1</div>
-            <div class="col seat available" data-seat="B2">B2</div>
-            <div class="col-2 gap"></div> <!-- Gap between first and second pair -->
-            <div class="col seat available" data-seat="B3">B3</div>
-            <div class="col seat available" data-seat="B4">B4</div>
-        </div>
-
-        <!-- Row 3 -->
-        <div class="row seat-row">
-            <div class="col seat available" data-seat="C1">C1</div>
-            <div class="col seat available" data-seat="C2">C2</div>
-            <div class="col-2 gap"></div> <!-- Gap between first and second pair -->
-            <div class="col seat available" data-seat="C3">C3</div>
-            <div class="col seat available" data-seat="C4">C4</div>
-        </div>
-
-        <!-- Row 4 -->
-        <div class="row seat-row">
-            <div class="col seat available" data-seat="D1">D1</div>
-            <div class="col seat available" data-seat="D2">D2</div>
-            <div class="col-2 gap"></div> <!-- Gap between first and second pair -->
-            <div class="col seat available" data-seat="D3">D3</div>
-            <div class="col seat available" data-seat="D4">D4</div>
-        </div>
-
-        <!-- Row 5 -->
-        <div class="row seat-row">
-            <div class="col seat available" data-seat="E1">E1</div>
-            <div class="col seat available" data-seat="E2">E2</div>
-            <div class="col-2 gap"></div> <!-- Gap between first and second pair -->
-            <div class="col seat available" data-seat="E3">E3</div>
-            <div class="col seat available" data-seat="E4">E4</div>
+    <div class="container mt-5">
+        <h2 class="text-center">Bus Seat Layout</h2>
+        <div class="row">
+            <!-- First Column: Seat Layout -->
+            <div class="col-3 mt-2 p-2 seatLayout">
+                <!-- Row 1 -->
+                <div class="row m-2">
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat1"> <br><label for="seat1">S1</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat2"> <br><label for="seat2">S2</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat3"> <br><label for="seat3">S3</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat4"> <br><label for="seat4">S4</label>
+                    </div>
+                </div>
+                <!-- Row 2 -->
+                <div class="row">
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat5"> <br><label for="seat5">S5</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat6"><br> <label for="seat6">S6</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat7"><br> <label for="seat7">S7</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat8"> <br><label for="seat8">S8</label>
+                    </div>
+                </div>
+                <!-- Row 3 -->
+                <div class="row">
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat9"><br> <label for="seat9">S9</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat10"> <br> <label for="seat10">S10</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat11"> <br><label for="seat11">S11</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat12"> <br><label for="seat12">S12</label>
+                    </div>
+                </div>
+                <!-- Row 4 -->
+                <div class="row">
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat13"> <br><label for="seat13">S13</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat14"> <br><label for="seat14">S14</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat15"> <br><label for="seat15">S15</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat16"> <br><label for="seat16">S16</label>
+                    </div>
+                </div>
+                <!-- Row 5 -->
+                <div class="row">
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat17"><br> <label for="seat17">S17</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat18"> <br><label for="seat18">S18</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat19"> <br><label for="seat19">S19</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat20"><br> <label for="seat20">S20</label>
+                    </div>
+                </div>
+                <!-- Row 6 -->
+                <div class="row">
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat21"> <br><label for="seat21">S21</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat22"> <br><label for="seat22">S22</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat23"> <br><label for="seat23">S23</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat24"> <br><label for="seat24">S24</label>
+                    </div>
+                </div>
+                <!-- Row 7 -->
+                <div class="row">
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat25"> <br> <label for="seat25">S25</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat26"> <br><label for="seat26">S26</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat27"> <br><label for="seat27">S27</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat28"> <br><label for="seat28">S28</label>
+                    </div>
+                </div>
+                <!-- Row 8 (Only 2 seats) -->
+                <div class="row">
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat29"><br> <label for="seat29">S29</label>
+                    </div>
+                    <div class="col-3 mt-3 p-1">
+                        <input type="checkbox" id="seat30"> <br><label for="seat30">S30</label>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Second Column (Passenger Details) -->
+            <div class="col-9">
+                <h4>Passenger Details</h4>
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter passenger name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Enter phone number">
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+    
         </div>
     </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/seat-selection.js"></script>
-
-</body>
+    <!-- Bootstrap 5 JS (Optional, for interactivity) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    </body>
 </html>
