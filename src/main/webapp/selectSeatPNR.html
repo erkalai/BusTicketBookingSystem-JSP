@@ -1,0 +1,70 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Seat Layout</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center">Bus Seat Layout</h2>
+
+    <!-- Seat Layout -->
+    <div class="seat-layout">
+        <!-- Row 1 -->
+        <div class="row seat-row">
+            <div class="col seat available" data-seat="A1">A1</div>
+            <div class="col seat available" data-seat="A2">A2</div>
+            <div class="col-2 gap"></div> <!-- Gap between first and second pair -->
+            <div class="col seat available" data-seat="A3">A3</div>
+            <div class="col seat available" data-seat="A4">A4</div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="row seat-row">
+            <div class="col seat available" data-seat="B1">B1</div>
+            <div class="col seat available" data-seat="B2">B2</div>
+            <div class="col-2 gap"></div> <!-- Gap between first and second pair -->
+            <div class="col seat available" data-seat="B3">B3</div>
+            <div class="col seat available" data-seat="B4">B4</div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="row seat-row">
+            <div class="col seat available" data-seat="C1">C1</div>
+            <div class="col seat available" data-seat="C2">C2</div>
+            <div class="col-2 gap"></div> <!-- Gap between first and second pair -->
+            <div class="col seat available" data-seat="C3">C3</div>
+            <div class="col seat available" data-seat="C4">C4</div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="row seat-row">
+            <div class="col seat available" data-seat="D1">D1</div>
+            <div class="col seat available" data-seat="D2">D2</div>
+            <div class="col-2 gap"></div> <!-- Gap between first and second pair -->
+            <div class="col seat available" data-seat="D3">D3</div>
+            <div class="col seat available" data-seat="D4">D4</div>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="row seat-row">
+            <div class="col seat available" data-seat="E1">E1</div>
+            <div class="col seat available" data-seat="E2">E2</div>
+            <div class="col-2 gap"></div> <!-- Gap between first and second pair -->
+            <div class="col seat available" data-seat="E3">E3</div>
+            <div class="col seat available" data-seat="E4">E4</div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/seat-selection.js"></script>
+
+</body>
+</html>

@@ -78,6 +78,7 @@
                             <div class="fw-bold"><%= rs.getString("bus_name")  %></div>                       
                         </td>
                         <td >
+                        	<div class="fw-bold"><%= rs.getString("departure_date")  %></div>
                             <div class="fw-bold"><%= rs.getString("departure_time")  %></div>
                             <div class="sub-title"><%= rs.getString("start_place")  %></div>                        
                         </td>
