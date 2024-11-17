@@ -19,7 +19,7 @@ version="4.0">
 
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
-        <url-pattern>/SearchServlet</url-pattern> <!-- Make sure this matches -->
+        <url-pattern>/SearchServlet</url-pattern> 
     </servlet-mapping>
     
     
@@ -32,6 +32,18 @@ version="4.0">
         <servlet-name>SearchBus</servlet-name>
         <url-pattern>/SearchBus</url-pattern> <!-- Make sure this matches -->
     </servlet-mapping>
-  
+    
+    <servlet>
+        <servlet-name>SearchBusInIndex</servlet-name>
+        <servlet-class>com.dev.searchBusInIndex</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchBusInIndex</servlet-name>
+        <url-pattern>/SearchBusInIndex</url-pattern> <!-- Make sure this matches -->
+    </servlet-mapping>
+    
+   
+    
   
 </web-app>

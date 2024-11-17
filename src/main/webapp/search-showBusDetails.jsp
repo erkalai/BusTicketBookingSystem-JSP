@@ -6,13 +6,15 @@ if(session.getAttribute("uname") == null){
 	response.sendRedirect("login.jsp");
 }
 %>  -->
-
+<!--  
 <%@page import="java.sql.*"  %>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Connection"%>
+
+ -->
 
 <!DOCTYPE html>
 <html>
@@ -72,7 +74,7 @@ if(session.getAttribute("uname") == null){
                 <thead id="busTableTitle">
                     
                 </thead>
-                <tbody id="busDetailsTable" class="text-center" name="busDetailsTable">
+                <tbody id="busDetailsTable" class="text-center" >
                 
                 <!-- Dynamic rows will be appended here -->
                     
@@ -173,27 +175,7 @@ $(document).ready(function() {
              '</td>' +
          '</tr>';
 
-                        
-                        /* var row = `
-                            <tr class="align-middle text-danger">
-                                <td>${busName}</td>
-                                <td>
-                                    <div class="fw-bold">${departureTime}</div>
-                                    <div class="sub-title">${startPlace}</div>
-                                </td>
-                                <td><div class="fw-bold">${duration}</div></td>
-                                <td>
-                                    <div class="fw-bold">${arrivalTime}</div>
-                                    <div class="sub-title">${endPlace}</div>
-                                </td>
-                                <td>
-                                    <div class="fw-bold">₹ ${seaterPrice} / ₹ ${sleeperPrice}</div>
-                                    <div class="f6">37 Seats Available</div>
-                                    <div class="btn btn-primary me-2">View Seats</div>
-                                </td>
-                            </tr>
-                        `;*/
-
+                     
                         // Append the row to the table body
                         $('#busDetailsTable').append(row);
                     });
@@ -211,7 +193,7 @@ $(document).ready(function() {
 
 
 
-<!-- On Click function To show search buses in Table  END-->
+ // On Click function To show search buses in Table  END
 
 $(document).ready(function() {
 	
@@ -273,7 +255,7 @@ $(document).ready(function() {
     
 });
 
-<!-- Destination Search DropDown -->
+// Destination Search DropDown 
 
 
 
@@ -299,7 +281,7 @@ $(document).ready(function() {
                     	
                         data.forEach(function(item) {
                         	 $('#destinationDropdown').append('<div class="dropdown-item" data-value="' + item + '">' + item + '</div>'); 
-                           <!-- $('#dropdown').append('<option value="' + item + '">' + item + '</option>'); -->
+                           //$('#dropdown').append('<option value="' + item + '">' + item + '</option>'); -->
                         });
                         $('#destinationDropdown').show();
                     } else {

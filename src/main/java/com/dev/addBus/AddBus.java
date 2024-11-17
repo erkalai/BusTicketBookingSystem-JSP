@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,7 +20,6 @@ public class AddBus extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
-		
 		
 		
 		String busId = request.getParameter("busId");
@@ -41,6 +39,7 @@ public class AddBus extends HttpServlet {
 		
 		
 		RequestDispatcher dispatcher = null;
+		
 //		Connection con = null;
 //		PrintWriter out = response.getWriter();
 //		out.print(uname);

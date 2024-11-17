@@ -184,43 +184,8 @@
                             <option value="1X2 Slepper & Seater">1X2 Sleeper & Seater</option>
                             </select>
                         </div>
-                        <!-- <div class="col">
-                            <div class="text fw-bold">Select Seat</div>
-                            <label for="cars" class="fw-bold">Select Seat:</label>
-                            <select name="seat" id="seat" multiple class="multiselect">
-                            <option value="2X2seater">Select All Seats</option>
-                            <option value="S1">S1</option>
-                            <option value="S1">S2</option>
-                            <option value="S">S3</option>
-                            <option value="S">S4</option>
-                            <option value="S">S5</option>
-                            <option value="S">S6</option>
-                            <option value="S">S7</option>
-                            <option value="S">S8</option>
-                            <option value="S">S9</option>
-                            <option value="S">S10</option>
-                            <option value="S">S11</option>
-                            <option value="S">S12</option>
-                            <option value="S">S13</option>
-                            <option value="S">S14</option>
-                            <option value="S">S15</option>
-                            <option value="S">S16</option>
-                            <option value="S">S17</option>
-                            <option value="S">S18</option>
-                            <option value="S">S19</option>
-                            <option value="S">S20</option>
-                            <option value="S">S21</option>
-                            <option value="S">S22</option>
-                            <option value="S">S23</option>
-                            <option value="S">S24</option>
-                            <option value="S">S25</option>
-                            <option value="S">S26</option>
-                            <option value="S">S27</option>
-                            <option value="S">S28</option>
-                            <option value="S29">S29</option>
-                            <option value="S30">S30</option>
-                            </select>
-                        </div> -->
+                          
+                        
                     </div>
                     <div class="row mt-5">
                         <div class="col text-center">

@@ -15,5 +15,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="D:/Req/Jar/mssql-jdbc-11.2.0.jre8.jar"/>
 	<classpathentry kind="lib" path="D:/Req/Jar/gson-2.10.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/er_kalai/Downloads/jar_files/jstl-1.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
