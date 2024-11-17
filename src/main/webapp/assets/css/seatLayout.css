@@ -1,0 +1,60 @@
+#selectedSeatsList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#selectedSeatsList li {
+    background-color: #007bff;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: normal;
+}
+.seat-row {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+.seat-box {
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
+.seat-box:hover {
+    background-color: #e9ecef;
+}
+
+.seat-box input[type="checkbox"] {
+    display: none;
+}
+
+.seat-box.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+#selectedSeatsList {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#selectedSeatsList li {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+.seatLayout{
+    border: dashed blue 2px;
+    border-radius: 20px;
+}
