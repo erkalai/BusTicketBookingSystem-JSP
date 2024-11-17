@@ -39,6 +39,7 @@ body {
     font-size: 2rem;
     font-weight: bolder;
     color: whitesmoke;
+
 }
 
 /* index-search */
@@ -56,13 +57,20 @@ body {
 
 /* Brand */
 .brand{
+    
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-.nav-item a{
-    color: rgba(255, 255, 255, 0.3);
+.nav-item a:hover{
+    font-weight: bolder !important;
+    border: solid black 1px !important;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    color: white !important;    
 }
-
+.nav-item a{
+    border-radius: 10px;
+}
 .brand {
     
     color: rgba(255, 255, 255, 0.3);    
