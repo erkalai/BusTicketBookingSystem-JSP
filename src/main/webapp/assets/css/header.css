@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.nav-item a:hover{
+    font-weight: bolder !important;
+    border: solid black 1px !important;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    color: white !important;    
+}
+.nav-item a{
+    border-radius: 10px;
+}
+.busContainer{
+	margin:20px;
+   	background-color:rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px;
+}
+.tablebg{
+	border-radius:10px;
+	margin:20px;
+   	background-color:rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px;
+}

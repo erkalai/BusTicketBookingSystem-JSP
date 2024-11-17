@@ -12,13 +12,16 @@
 
 </head>
 <body>
+
+<%@include file="./header.jsp" %>
 <div class="container mt-3">
     
-    <div class="btn btn-primary" href="addBus.jsp">ADD Bus</div>
-<a href="addBus.jsp">Add Bus</a>
-<a href="search-showBusDetails.jsp">Add Bus</a>
+    <a href="addBus.jsp"><div class="btn btn-primary" >ADD Bus</div></a>
+    
+    <a href="addBus.jsp"><div class="btn btn-danger" >Print PNR List</div></a>
+    <a href="selectSeatPNR.html"><div class="btn btn-warning" >ADD Bus</div></a>
+    <a href="addBus.jsp"><div class="btn btn-success" >Add Bus Stations</div></a>
 
-<a href="search-showBusDetails.jsp">Print PNR List</a>
 </div>
 </body>
 </html>
