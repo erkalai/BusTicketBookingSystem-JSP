@@ -1,5 +1,8 @@
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  -->
+    
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +16,10 @@
 </head>
 <body>
 
-<%@include file="./header.jsp" %>
+<%@include file="./loginHeader.jsp" %>
 <div class="container mt-3">
     
-    <a href="addBus.html"><div class="btn btn-primary" >ADD Bus</div></a>
+    <a href="addBus.jsp"><div class="btn btn-primary" >ADD Bus</div></a>
     
     <a href="addBus.html"><div class="btn btn-danger" >Print PNR List</div></a>
     <a href="selectSeatPNR.html"><div class="btn btn-warning" >ADD Bus</div></a>

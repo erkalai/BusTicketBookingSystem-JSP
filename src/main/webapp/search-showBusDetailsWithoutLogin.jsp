@@ -27,7 +27,7 @@
                 <tbody>
                     <!-- Loop through each bus detail -->
                     <c:forEach var="bus" items="${busDetails}">
-                        <tr class="align-middle  tablebg">
+                        <tr class="align-middle text-center tablebg">
                             <td>${bus.busName}</td>
                             <td>
                                 <div class="fw-bold">${bus.departureTime}</div>
@@ -41,7 +41,7 @@
                             <td>
                                 <div class="fw-bold">Rs ${bus.seaterPrice} / Rs ${bus.sleeperPrice}</div>
                                 <div class="f6">37 Seats Available</div>
-                                <a href="./login.html"><div class="btn btn-primary me-2">Login </div></a>
+                                <a href="./login.jsp"><div class="btn btn-primary me-2">Login </div></a>
                             </td>
                         </tr>
                     </c:forEach>

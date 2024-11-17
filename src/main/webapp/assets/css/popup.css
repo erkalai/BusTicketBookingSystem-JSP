@@ -1,0 +1,21 @@
+.popup{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.pop-content{
+    height: auto;
+    width: 50%;
+    background: white;
+    padding: 20x;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}

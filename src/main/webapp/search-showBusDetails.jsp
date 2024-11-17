@@ -1,20 +1,7 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 
+ 
 
-<!-- <%
-if(session.getAttribute("uname") == null){
-	response.sendRedirect("login.jsp");
-}
-%>  -->
-<!--  
-<%@page import="java.sql.*"  %>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.Connection"%>
-
- -->
 
 <!DOCTYPE html>
 <html>
@@ -44,6 +31,9 @@ if(session.getAttribute("uname") == null){
 
 </head>
 <body>
+
+<%@include file="./loginHeader.jsp" %>
+
         <div class="container">
             <!-- <form action="" method="post"> -->
                 <p class="lead fw-bold mb-1 text-center">Book Bus Tickets</p>

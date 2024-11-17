@@ -8,7 +8,7 @@ version="4.0">
 
   <display-name>BusTicketingBooking-JSP</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
   
@@ -43,6 +43,16 @@ version="4.0">
         <url-pattern>/SearchBusInIndex</url-pattern> <!-- Make sure this matches -->
     </servlet-mapping>
     
+    
+    <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>com.dev.delete</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/DeleteServlet</url-pattern> <!-- Make sure this matches -->
+    </servlet-mapping>
    
     
   

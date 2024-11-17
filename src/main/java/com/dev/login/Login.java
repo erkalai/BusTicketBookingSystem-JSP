@@ -28,7 +28,7 @@ public class Login extends HttpServlet{
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		HttpSession session = request.getSession();
+		
 
 		RequestDispatcher dispatcher = null;
 		Connection con = null;
@@ -43,11 +43,20 @@ public class Login extends HttpServlet{
 	         PreparedStatement pst = con.prepareStatement("select * from user_tbl where email = ? AND password = ?");
 	         pst.setString(1, email);
 	         pst.setString(2, password);
+	         
 	         ResultSet rs = pst.executeQuery();
 	         if (rs.next()) {
+	        	 HttpSession session = request.getSession();
 	        	 session.setAttribute("uname",rs.getString("name"));
-
-	        	 dispatcher = request.getRequestDispatcher("search-showBusDetails.jsp");
+	        	 
+	        	 switch (rs.getString("role")) {
+	        	 	case "admin":
+	        	 		dispatcher = request.getRequestDispatcher("adminDashboard.jsp");
+	        	 		break;
+	        	 	case "user":
+	        	 		dispatcher = request.getRequestDispatcher("search-showBusDetails.jsp");
+	        	 		break;
+	        	 }
 	         }else {
 	        	 request.setAttribute("status", "failed");
 
