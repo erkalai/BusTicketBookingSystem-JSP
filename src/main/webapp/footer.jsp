@@ -12,9 +12,9 @@
 </head>
 <body>
   <footer class="bg-body-secondary text-center text-lg-start fixed-bottom">
-    <div class="text-center p-3" style="background-color: transparent;">
+    <div class="text-center p-3 text-white" style="background-color: transparent;">
         © 2024 Copyright:
-        <a class="text-body" href="#">erkalai</a>
+        <a class="text-body text-white" href="#">erkalai</a>
     </div>
 </footer>
 </body>

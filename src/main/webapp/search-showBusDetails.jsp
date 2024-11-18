@@ -1,6 +1,14 @@
- <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
- 
+ <%
+if(session.getAttribute("sessionId")==null){
+	response.sendRedirect("index.jsp");
+}
+if(request.getParameter("logout")!=null){
+	session.removeAttribute("sessionId");
+	response.sendRedirect("index.jsp");
+}
+%>
 
 
 <!DOCTYPE html>
@@ -161,7 +169,7 @@ $(document).ready(function() {
              '<td>' +
                  '<div class="fw-bold">₹ ' + seaterPrice + ' / ₹ ' + sleeperPrice + '</div>' +
                  '<div class="f6">37 Seats Available</div>' +
-                 '<div class="btn btn-primary me-2">View Seats</div>' +
+                 '<a href="selectSeatPNR.jsp"><div class="btn btn-primary me-2">View Seats</div></a>' +
              '</td>' +
          '</tr>';
 

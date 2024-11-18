@@ -12,10 +12,12 @@
 }
 .pop-content{
     height: auto;
-    width: 50%;
+    width: 90%;
+    max-width: 1000px;
     background: white;
     padding: 20x;
     border-radius: 10px;
     position: relative;
     text-align: center;
+    overflow:auto;
 }

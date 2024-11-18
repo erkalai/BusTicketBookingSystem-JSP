@@ -1,3 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%
+if(session.getAttribute("sessionId")==null || session.getAttribute("name")==null){
+	response.sendRedirect("index.jsp");
+}
+if(request.getParameter("logout")!=null){
+	session.removeAttribute("sessionId");
+	session.removeAttribute("name");
+	response.sendRedirect("index.jsp");
+}
+
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +27,8 @@
 </head>
 <body>
  
+<!-- Get Name -->
+
 
 <div class="container-fluid" style="background-image: linear-gradient(to right, #a2a7b0 , #ffffff);">
         <nav class="navbar navbar-expand-lg " style="background-color: rgba(255, 255, 255, 0.3); border-radius:0px 0px 10px 10px;">
@@ -23,7 +40,7 @@
               <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav me-2 mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link navlink text-secondary" aria-current="page" href="adminDashboard.html">Log Out</a>
+                    <a class="nav-link navlink text-secondary" aria-current="page" name="logout" href="./login.jsp">Log Out</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link navlink  text-secondary" style="color:blue" href="#" >Change Password</a>
@@ -35,10 +52,13 @@
                     <a class="nav-link navlink text-secondary" href="#">Booking History</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link navlink text-secondary" href="./login.html">Name <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <% 
+                  String Name = (String) session.getAttribute("name");
+                  %>
+                    <div class="nav-link navlink text-secondary" ><%= Name %> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                      </svg></a>
+                      </svg></div>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link navlink" href="#"></a>

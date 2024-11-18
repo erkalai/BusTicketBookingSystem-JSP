@@ -47,7 +47,9 @@ public class Login extends HttpServlet{
 	         ResultSet rs = pst.executeQuery();
 	         if (rs.next()) {
 	        	 HttpSession session = request.getSession();
-	        	 session.setAttribute("uname",rs.getString("name"));
+	        	 
+	        	 session.setAttribute("sessionId",rs.getString("email"));
+	        	 session.setAttribute("name",rs.getString("name"));
 	        	 
 	        	 switch (rs.getString("role")) {
 	        	 	case "admin":

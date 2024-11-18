@@ -1,3 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+ <%
+if(session.getAttribute("sessionId")==null){
+	response.sendRedirect("index.jsp");
+}
+if(request.getParameter("logout")!=null){
+	session.removeAttribute("sessionId");
+	response.sendRedirect("index.jsp");
+}
+%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +21,8 @@
     <link rel="stylesheet" href="./assets/css/seatLayout.css">
 </head>
 <body>
-
-<div class="container mt-5">
+<%@include file="./loginHeader.jsp" %>
+<div class="container ">
     <div class="row">
         <!-- Seat Layout Column -->
         <div class="col-lg-3 mt-2 p-2 seatLayout">

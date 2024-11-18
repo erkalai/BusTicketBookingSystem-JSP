@@ -1,4 +1,14 @@
- <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+ <%
+if(session.getAttribute("sessionId")==null){
+	response.sendRedirect("index.jsp");
+}
+if(request.getParameter("logout")!=null){
+	session.removeAttribute("sessionId");
+	response.sendRedirect("index.jsp");
+}
+%>
 
     
 <%@page import="java.sql.*"  %>
@@ -26,20 +36,20 @@
 <body>
 <%@include file="./loginHeader.jsp" %>
     <!-- Title -->
-    <div class="text-center fw-bold fs-4 mt-2">Add Bus</div>
+    <div class="text-center fw-bold fs-5">ADD BUS</div>
 
     <!-- Container Start -->
-    <div class="continer ms-2 mt-3 ">
+    <div class="continer ms-2  ">
 
     <!-- Add Bus button And Refresh Button start-->
         <div class="row ">
-            <div class="col mt-2 align-self-end">
+            <div class="col  ">
                 <div id="button" class="button btn  btn-primary">
                     Add Bus
                 </div>
-                <div id="button" class="button btn  btn-success">
+                <a href="./addBus.jsp"><div id="button" class="button btn  btn-success">
                     Refresh
-                </div>
+                </div></a>
             </div>
         </div>
         <!-- Add Bus button And Refresh Button End-->
@@ -77,7 +87,7 @@
                             <div class="fw-bold"><%= rs.getString("bus_name")  %></div>                       
                         </td>
                         <td >
-                        	<div class="fw-bold"><%= rs.getString("departure_date")  %></div>
+                        	<div class="sub-title"><%= rs.getString("departure_date")  %></div>
                             <div class="fw-bold"><%= rs.getString("departure_time")  %></div>
                             <div class="sub-title"><%= rs.getString("start_place")  %></div>                        
                         </td>
@@ -127,58 +137,62 @@
             <form action="addBusDetails" method="post" id="form">
                 <div class="container">
                     <h5 class="text-center mt-1">Add Bus Details</h5>
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col mt-2">
                             <div class="text fw-bold">Bus ID</div>
-                            <input type="text" name = "busId" placeholder="Bus ID">
+                            <input type="text" name = "busId" placeholder="Bus ID" required>
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Bus Name</div>
-                            <input type="text" name = "busName" placeholder="Bus Name">
+                            <input type="text" name = "busName" placeholder="Bus Name" required>
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Bus Route</div>
-                            <input type="text" name = "busRoute" placeholder="Bus Route">
+                            <input type="text" name = "busRoute" placeholder="Bus Route" required>
                         </div>
+                      </div>
+                      <div class="row mt-3">
                         <div class="col mt-2">
                             <div class="text fw-bold">Departure Date</div>
-                            <input type="date" name = "departureDate" placeholder="Departure Date">
+                            <input type="date" name = "departureDate" placeholder="Departure Date" required>
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Arrival Date</div>
-                            <input type="date" name = "arrivalDate" placeholder="Arrival Date">
+                            <input type="date" name = "arrivalDate" placeholder="Arrival Date" required>
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Departure Time</div>
-                            <input type="time" name = "departureTime" placeholder="Departure Time">
+                            <input type="time" name = "departureTime" placeholder="Departure Time" required>
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Arrival Time</div>
-                            <input type="time" name = "arrivalTime" placeholder="Arrival Time">
+                            <input type="time" name = "arrivalTime" placeholder="Arrival Time" required>
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Duration</div>
-                            <input type="time" name = "duration" placeholder="Duration">
+                            <input type="time" name = "duration" placeholder="Duration" required>
                         </div>
+                      </div>
+                      <div class="row mt-3">
                         <div class="col mt-2">
                             <div class="text fw-bold">Start Place</div>
-                            <input type="text" name = "startPlace" placeholder="Start Place">
+                            <input type="text" name = "startPlace" placeholder="Start Place" required>
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">End Place</div>
-                            <input type="text" name = "endPlace" placeholder="End Place">
+                            <input type="text" name = "endPlace" placeholder="End Place" required>
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Seater Price</div>
-                            <input type="text" name = "seaterPrice" placeholder="Seater Price">
+                            <input type="text" name = "seaterPrice" placeholder="Seater Price" required>
                         </div>
                         <div class="col mt-2">
                             <div class="text fw-bold">Sleeper Price</div>
-                            <input type="text" name = "sleeperPrice" placeholder="Sleeper Price">
+                            <input type="text" name = "sleeperPrice" placeholder="Sleeper Price" required>
                         </div>
                         <div class="col mt-2">
                             <label for="Layout" class="fw-bold">Layout:</label>
-                            <select name="layOut" id="layOut">
+                            <select name="layOut" id="layOut" required>
                             <option value="2X2seater">2X2 Seater</option>
                             <option value="1X2 Slepper & Seater">1X2 Sleeper & Seater</option>
                             </select>
@@ -186,7 +200,7 @@
                           
                         
                     </div>
-                    <div class="row mt-5">
+                    <div class="row mt-3 mb-3">
                         <div class="col text-center">
                             <button class="btn btn-primary">Add</button>
                             <div class="close btn btn-danger">Close</div>
