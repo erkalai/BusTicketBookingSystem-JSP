@@ -1,22 +1,22 @@
 $(document).ready(function() {
 	
-    // Event listener for typing in the search input
+    // Event listener  typing search box
     $('#source').on('keyup', function() {
         var query = $(this).val();
 
-        // If query is empty, don't make an AJAX request
+        // query is empty
         if(query.length > 0) {  
 
             $.ajax({
-                url: 'SearchServlet',   // Servlet that handles the search
+                url: 'SearchServlet',   //handles the search servlet
                 type: 'GET',
-                data: { query: query },     // Send query as a parameter
+                data: { query: query },     // Send query  parameter
                 success: function(data) {
 
-                    // Clear the existing dropdown options
+                    // Clear existing dropdown options
                     $('#sourceDropdown').empty();
 
-                    // Append new search results to the dropdown
+                    // Append new search results to dropdown
                     if (data.length > 0) {
                     	
                         data.forEach(function(item) {
@@ -38,13 +38,13 @@ $(document).ready(function() {
         }
     });
     
-    // Handle the click event on dropdown items
+    // Handle the click event in dropdown items
     $('#sourceDropdown').on('click', '.dropdown-item', function() {
-        // Set the value of the input field to the selected option
+        // Set the value of input field to the selected option
         var selectedValue = $(this).data('value');
         $('#source').val(selectedValue);
 
-        // Hide the dropdown after selection
+        // Hide dropdown after selection
         $('#sourceDropdown').hide();
     });
 
