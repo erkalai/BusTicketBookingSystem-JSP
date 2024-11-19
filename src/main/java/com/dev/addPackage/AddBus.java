@@ -1,4 +1,4 @@
-package com.dev.addBus;
+package com.dev.addPackage;
 
 import java.io.IOException;
 import java.sql.Connection;

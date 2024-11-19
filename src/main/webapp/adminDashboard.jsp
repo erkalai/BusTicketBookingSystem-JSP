@@ -47,10 +47,10 @@ if(request.getParameter("logout")!=null){
       </a>
 
       <!-- Print PNR List -->
-      <a href="printPNR.jsp" class="btn btn-warning mb-3">
+      <a href="getPNR.jsp" class="btn btn-warning mb-3">
         <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
           <path d="M9 0a1 1 0 0 1 1 1v4.5H9.5A.5.5 0 0 0 9 6h-4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5H9V1a1 1 0 0 1 1-1zM5 6h6v8H5V6z"/>
-        </svg> Print PNR List
+        </svg> PNR List
       </a>
     </div>
   </div>
