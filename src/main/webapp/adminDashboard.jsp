@@ -27,7 +27,7 @@ if(request.getParameter("logout")!=null){
 </head>
 <body>
 
-<%@include file="./loginHeader.jsp" %>
+<%@include file="./loginHeaderAdmin.jsp" %>
 <div class="d-flex justify-content-center align-items-center vh-100 p-3">
     <!-- Container for the buttons -->
     <div class="text-center">
