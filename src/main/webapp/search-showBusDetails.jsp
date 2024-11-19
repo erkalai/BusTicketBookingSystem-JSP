@@ -155,23 +155,29 @@ $(document).ready(function() {
                         
                         
                         
-                        var row = '<tr class="align-middle text-danger">' +
-             '<td>' + busName + '</td>' +
-             '<td>' +
-                 '<div class="fw-bold">' + departureTime + '</div>' +
-                 '<div class="sub-title">' + startPlace + '</div>' +
-             '</td>' +
-             '<td><div class="fw-bold">' + duration + '</div></td>' +
-             '<td>' +
-                 '<div class="fw-bold">' + arrivalTime + '</div>' +
-                 '<div class="sub-title">' + endPlace + '</div>' +
-             '</td>' +
-             '<td>' +
-                 '<div class="fw-bold">₹ ' + seaterPrice + ' / ₹ ' + sleeperPrice + '</div>' +
-                 '<div class="f6">37 Seats Available</div>' +
-                 '<a href="selectSeatPNR.jsp"><div class="btn btn-primary me-2">View Seats</div></a>' +
-             '</td>' +
-         '</tr>';
+                       var row = 
+    '<tr class="align-middle text-danger">' +
+        '<td>' + busName + '</td>' +
+        '<td>' +
+            '<div class="fw-bold">' + departureTime + '</div>' +
+            '<div name="srartPlace" class="sub-title">' + startPlace + '</div>' +
+        '</td>' +
+        '<td><div class="fw-bold">' + duration + '</div></td>' +
+        '<td>' +
+            '<div class="fw-bold">' + arrivalTime + '</div>' +
+            '<div name="endPlace" class="sub-title">' + endPlace + '</div>' +
+        '</td>' +
+        '<td>' +
+            '<div class="fw-bold">₹ ' + seaterPrice + ' / ₹ ' + sleeperPrice + '</div>' +
+            '<div class="f6">37 Seats Available</div>' +
+            '<form action="viewSeats" method="post">' +
+                '<button type="submit" class="btn btn-primary me-2">View Seats</button>' +
+            '</form>' +
+        '</td>' +
+    '</tr>';
+
+         
+
 
                      
                         // Append the row to the table body

@@ -10,10 +10,7 @@ if(request.getParameter("logout")!=null){
 }
 %>
 
-
-    
-    
-    
+  
 <!DOCTYPE html>
 <html>
 <head>
