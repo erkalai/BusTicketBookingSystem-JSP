@@ -49,7 +49,7 @@ if(request.getParameter("logout")!=null){
                     </tr>
                 </thead>
                 <tbody>
-                 <%
+                <%
                     try{
                         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                         Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=BusBooking;TrustServerCertificate=True;user=root;password=root");
@@ -57,9 +57,7 @@ if(request.getParameter("logout")!=null){
                          
                          ResultSet rs = pst.executeQuery();
                         while(rs.next())
-                        {
-    
-        
+                        {        
                 %>
                     <tr class=" align-middle text-center">
                         <th scope="row"><%= rs.getString("bus_id")  %></th>

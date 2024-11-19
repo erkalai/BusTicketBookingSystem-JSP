@@ -18,8 +18,9 @@
 .seat-row {
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
+
 
 .seat-box {
     border: 2px solid #007bff;
@@ -44,6 +45,25 @@
     background-color: #007bff;
     color: white;
 }
+
+/* Driver Seat Start*/
+
+.driver-seat-box {
+    border: 2px solid purple;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    background-color: pink;
+    width: 100px;
+    height: 35px;
+}
+.driver-seat-row {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 5px;
+}
+
+/* Driver Seat End*/
 
 #selectedSeatsList {
     list-style-type: none;
